@@ -35,7 +35,7 @@ public class LoginListener implements ActionListener {
         else if ("LOGGA".equals(e.getActionCommand())
                 || e.getSource() instanceof JTextField
                 || e.getSource() instanceof JPasswordField) {
-            finestra.dispose();
+
             String username = finestralogin.getTxtUsername().getText();
             byte[] password = new String(finestralogin.getTxtPassword().getPassword()).getBytes();
             Persona p = UtenteBusiness.getInstance().login(username, password);
@@ -47,10 +47,13 @@ public class LoginListener implements ActionListener {
                     System.out.println("benvenuto gestore \n" + p.getNome() + " " + p.getCognome());
                     Gestore g = (Gestore) p;
                     System.out.println("id gestore : " + g.getIdgestore());
+                    JOptionPane.showMessageDialog(null,"sei un gestore");
                 } else if (p instanceof Utentereg) {
                     System.out.println("benvenuto utente \n" + p.getNome() + " " + p.getCognome());
                     Utentereg utentereg = (Utentereg) p;
                     System.out.println("indirizzo: " + utentereg.getIndirizzo());
+                    finestra.setVisible(false);
+                    finestralogin.setVisible(false);
                     SessionManager.getInstance().getSession().put("persona",utentereg);
                     finestraprinc.getClp().show(finestraprinc.getPanelcontprinc(),"2");
                 } else if (p instanceof Amministratore) {
