@@ -47,14 +47,15 @@ public class LoginListener implements ActionListener {
                     System.out.println("benvenuto gestore \n" + p.getNome() + " " + p.getCognome());
                     Gestore g = (Gestore) p;
                     System.out.println("id gestore : " + g.getIdgestore());
-                    JOptionPane.showMessageDialog(null,"sei un gestore");
+                    SessionManager.getInstance().getSession().put("gestore",g);
+                    finestra.setVisible(false);
+                    finestraprinc.getClp().show(finestraprinc.getPanelcontprinc(),"3");
                 } else if (p instanceof Utentereg) {
                     System.out.println("benvenuto utente \n" + p.getNome() + " " + p.getCognome());
                     Utentereg utentereg = (Utentereg) p;
+                    SessionManager.getInstance().getSession().put("utente",utentereg);
                     System.out.println("indirizzo: " + utentereg.getIndirizzo());
                     finestra.setVisible(false);
-                    finestralogin.setVisible(false);
-                    SessionManager.getInstance().getSession().put("persona",utentereg);
                     finestraprinc.getClp().show(finestraprinc.getPanelcontprinc(),"2");
                 } else if (p instanceof Amministratore) {
                     System.out.println("benvenuto amministratore \n" + p.getNome() + " " + p.getCognome());

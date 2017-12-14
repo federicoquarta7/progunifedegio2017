@@ -1,8 +1,10 @@
-package it.view.GUI.GUIprincipale_u_g_a;
+package it.view.GUI.GUIprincipale_u_g_a.utentereg;
 
 import it.model.Persona;
+import it.model.Utentereg;
 import it.utility.SessionManager;
 import it.view.CardLayout.PrincUtentereg;
+import it.view.GUI.GUIprincipale_u_g_a.gestore.GuiCatalogoGestore;
 import it.view.GUI.Prod_carr_pani.ProdottoPanel;
 
 import javax.swing.*;
@@ -15,10 +17,7 @@ public class GuiCatalogoUtente extends JPanel {
     public GuiCatalogoUtente(PrincUtentereg finestraprinc){
         super();
         this.setLayout(new BorderLayout());
-        JPanel north =new JPanel();
-        north.setLayout(new FlowLayout());
-        north.add(new Benvenuto(finestraprinc));
-        this.add(north,BorderLayout.NORTH);
+        this.add(new Benvenuto(finestraprinc),BorderLayout.NORTH);
 
         JPanel centro=new JPanel();
         centro.setLayout(new GridLayout(4,4));
@@ -33,17 +32,16 @@ public class GuiCatalogoUtente extends JPanel {
 
     }
     public class Benvenuto extends JPanel{
-        Benvenuto _this=this;
+        GuiCatalogoUtente.Benvenuto _this=this;
         public Benvenuto(PrincUtentereg finestraprinc){
             super();
             _this.setLayout(new BorderLayout());
-            Persona p=(Persona)SessionManager.getInstance().getSession().get("persona");
-            //Utentereg utentereg=(Utentereg) SessionManager.getInstance().getSession().get("studente");
+            Utentereg utentereg=(Utentereg) SessionManager.getInstance().getSession().get("utente");
             try {
-                _this.add(new JLabel("Benvenuto \n" + p.getNome() + " " + p.getCognome()), BorderLayout.WEST);
+                _this.add(new JLabel("Benvenuto " + utentereg.getNome() + " " + utentereg.getCognome()), BorderLayout.WEST);
             }
             catch (Exception e){
-                _this.add(new JLabel("Benvenuto"),BorderLayout.WEST);
+                _this.add(new JLabel("Benvenuto utente"),BorderLayout.WEST);
             }
             JPanel est=new JPanel();
             JButton btLogout=new JButton("Logout");

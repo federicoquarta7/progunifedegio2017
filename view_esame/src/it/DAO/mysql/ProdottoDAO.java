@@ -8,6 +8,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ProdottoDAO implements IProdottoDAO {
+
+    private String nomeprod;
+    private double prezzo;
+    private int sconto;
+    private boolean prodottocomposto;
+
+
+
     public static ProdottoDAO instance;
     public static ProdottoDAO getInstance()
     {
@@ -50,5 +58,15 @@ public class ProdottoDAO implements IProdottoDAO {
             listautenti.add(prodotto);
         }
         return listautenti;
+    }
+    public void insertProdotto(){
+        Prodotto prodotto=new Prodotto();
+       nomeprod=prodotto.getNomeprodotto();
+       prezzo=prodotto.getPrezzo();
+       sconto=prodotto.getSconto();
+       prodottocomposto=prodotto.isProdottocomposto();
+        DbConnection.getInstance().eseguiQuery("INSERT INTO `prova3_2`.`prodotto` (nome,prezzo,sconto,is_composto) " +
+                                           "VALUES ('"+nomeprod+"','"+prezzo+"','"+sconto+"','"+prodottocomposto+"') ");
+
     }
 }

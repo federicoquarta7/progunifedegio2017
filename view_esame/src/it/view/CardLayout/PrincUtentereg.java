@@ -1,7 +1,8 @@
 package it.view.CardLayout;
 
 import it.actionListener.Guiprinc_listener.PrincipaleListener;
-import it.view.GUI.GUIprincipale_u_g_a.GuiCatalogoUtente;
+import it.view.GUI.GUIprincipale_u_g_a.gestore.GuiCatalogoGestore;
+import it.view.GUI.GUIprincipale_u_g_a.utentereg.GuiCatalogoUtente;
 import it.view.GUI.GUIprincipale_u_g_a.GuiPrincipale;
 
 import javax.swing.*;
@@ -15,6 +16,7 @@ public class PrincUtentereg extends JFrame {
         panelcontprinc.setLayout(clp);
         panelcontprinc.add(new GuiPrincipale(this),"1");
         panelcontprinc.add(new GuiCatalogoUtente(this),"2");
+        panelcontprinc.add(new GuiCatalogoGestore(this),"3");
         clp.show(panelcontprinc,"1");
         PrincipaleListener listener = new PrincipaleListener(this);
         JMenuBar bar= new JMenuBar();
