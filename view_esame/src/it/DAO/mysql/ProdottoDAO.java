@@ -42,7 +42,7 @@ public class ProdottoDAO implements IProdottoDAO {
     }
     public ArrayList<Prodotto> findAllprod()
     {
-        ArrayList<String[]> risultato= DbConnection.getInstance().eseguiQuery("SELECT * FROM utente_reg");
+        ArrayList<String[]> risultato= DbConnection.getInstance().eseguiQuery("SELECT * FROM prodotto");
         ArrayList<Prodotto> listaprodotti= new ArrayList<Prodotto>();
         /*interetor è un iteratore di liste*/
         Iterator<String[]> i = risultato.iterator();

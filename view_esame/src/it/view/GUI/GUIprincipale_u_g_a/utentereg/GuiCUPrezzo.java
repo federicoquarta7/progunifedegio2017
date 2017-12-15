@@ -24,7 +24,7 @@ public class GuiCUPrezzo extends JPanel {
         ArrayList<Prodotto> listaprodotti=ProdottoDAO.getInstance().findbycosto(prezzo);
         JPanel centro=new JPanel();
         centro.setLayout(new GridLayout(4,4));
-        for(int i=1;i<=listaprodotti.size(); i++) {
+        for(int i=0;i<listaprodotti.size(); i++) {
             Prodotto prodotto=listaprodotti.get(i);
             centro.add(new ProdottoPanel(prodotto));
         }

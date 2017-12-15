@@ -25,7 +25,7 @@ public class GuiCatalogoUtente extends JPanel {
         ArrayList<Prodotto> listaprodotti= ProdottoDAO.getInstance().findAllprod();
         JPanel centro=new JPanel();
         centro.setLayout(new GridLayout(4,4));
-        for(int i=1;i<=listaprodotti.size(); i++) {
+        for(int i=0;i<listaprodotti.size(); i++) {
             Prodotto p=listaprodotti.get(i);
             centro.add(new ProdottoPanel(p));
         }

@@ -57,11 +57,11 @@ public class PrincUtentereg extends JFrame {
                 finoA20.addActionListener(listener);
                 finoA20.setActionCommand("FINO_A_20");
                 fasciaDiPrezzo.add(finoA20);
-        JMenuItem da20A50=new JMenuItem("Da €20 a €50");
+        JMenuItem da20A50=new JMenuItem("Fino €50");
                 da20A50.addActionListener(listener);
                 da20A50.setActionCommand("FINO_50");
                 fasciaDiPrezzo.add(da20A50);
-        JMenuItem da50A100=new JMenuItem("Da €50 a €100");
+        JMenuItem da50A100=new JMenuItem("Fino €100");
                 da50A100.addActionListener(listener);
                 da50A100.setActionCommand("FINO_100");
                 fasciaDiPrezzo.add(da50A100);
