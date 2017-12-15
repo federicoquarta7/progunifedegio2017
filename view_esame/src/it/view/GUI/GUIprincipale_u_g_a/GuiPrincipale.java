@@ -1,5 +1,7 @@
 package it.view.GUI.GUIprincipale_u_g_a;
 
+import it.DAO.mysql.ProdottoDAO;
+import it.model.Prodotto;
 import it.view.CardLayout.LoginPassFrame;
 import it.view.CardLayout.PrincUtentereg;
 import it.view.GUI.Prod_carr_pani.ProdottoPanel;
@@ -9,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GuiPrincipale extends JPanel{
     public GuiPrincipale(PrincUtentereg finestraprinc){
@@ -35,10 +38,12 @@ public class GuiPrincipale extends JPanel{
             north.add(btregistrazione);
         this.add(north,BorderLayout.NORTH);
 
+        ArrayList<Prodotto> listaprodotti= ProdottoDAO.getInstance().findAllprod();
         JPanel centro=new JPanel();
             centro.setLayout(new GridLayout(4,4));
-            for(int i=1;i<=10; i++) {
-                centro.add(new ProdottoPanel());
+            for(int i=1;i<=listaprodotti.size(); i++) {
+                Prodotto p=listaprodotti.get(i);
+                centro.add(new ProdottoPanel(p));
             }
         this.add(centro,BorderLayout.CENTER);
 

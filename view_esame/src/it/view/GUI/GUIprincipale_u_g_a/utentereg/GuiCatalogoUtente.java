@@ -1,6 +1,8 @@
 package it.view.GUI.GUIprincipale_u_g_a.utentereg;
 
+import it.DAO.mysql.ProdottoDAO;
 import it.model.Persona;
+import it.model.Prodotto;
 import it.model.Utentereg;
 import it.utility.SessionManager;
 import it.view.CardLayout.PrincUtentereg;
@@ -11,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GuiCatalogoUtente extends JPanel {
 
@@ -19,10 +22,12 @@ public class GuiCatalogoUtente extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(new Benvenuto(finestraprinc),BorderLayout.NORTH);
 
+        ArrayList<Prodotto> listaprodotti= ProdottoDAO.getInstance().findAllprod();
         JPanel centro=new JPanel();
         centro.setLayout(new GridLayout(4,4));
-        for(int i=1;i<=10; i++) {
-            centro.add(new ProdottoPanel());
+        for(int i=1;i<=listaprodotti.size(); i++) {
+            Prodotto p=listaprodotti.get(i);
+            centro.add(new ProdottoPanel(p));
         }
         JScrollPane scrollPane=new JScrollPane();
         scrollPane.setViewportView(centro);

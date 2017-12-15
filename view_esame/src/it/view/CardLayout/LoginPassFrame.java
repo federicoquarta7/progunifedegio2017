@@ -1,6 +1,6 @@
 package it.view.CardLayout;
 
-import it.view.GUI.Login.LoginFrame;
+import it.view.GUI.Login.LoginPanel;
 import it.view.GUI.Login.PassDimenticata;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ public class LoginPassFrame extends JFrame {
     private CardLayout cl=new CardLayout();
     public LoginPassFrame(PrincUtentereg finestraprinc){
         panelcont.setLayout(cl);
-        panelcont.add(new LoginFrame(this,finestraprinc),"1");
+        panelcont.add(new LoginPanel(this,finestraprinc),"1");
         panelcont.add(new PassDimenticata(this),"2");
         cl.show(panelcont,"1");
         frame.add(panelcont);

@@ -43,7 +43,7 @@ public class ProdottoDAO implements IProdottoDAO {
     public ArrayList<Prodotto> findAllprod()
     {
         ArrayList<String[]> risultato= DbConnection.getInstance().eseguiQuery("SELECT * FROM utente_reg");
-        ArrayList<Prodotto> listautenti= new ArrayList<Prodotto>();
+        ArrayList<Prodotto> listaprodotti= new ArrayList<Prodotto>();
         /*interetor è un iteratore di liste*/
         Iterator<String[]> i = risultato.iterator();
         while(i.hasNext()) {
@@ -55,9 +55,9 @@ public class ProdottoDAO implements IProdottoDAO {
             prodotto.setPrezzo(Double.parseDouble(riga[2]));
             prodotto.setSconto(Integer.parseInt(riga[3]));
             prodotto.setProdottocomposto(Boolean.parseBoolean(riga[6]));
-            listautenti.add(prodotto);
+            listaprodotti.add(prodotto);
         }
-        return listautenti;
+        return listaprodotti;
     }
     public void insertProdotto(){
         Prodotto prodotto=new Prodotto();
@@ -69,4 +69,28 @@ public class ProdottoDAO implements IProdottoDAO {
                                            "VALUES ('"+nomeprod+"','"+prezzo+"','"+sconto+"','"+prodottocomposto+"') ");
 
     }
+    public ArrayList<Prodotto> findbycosto(double costo){
+        ArrayList<String[]> risultato;
+        if(costo>100){
+            risultato = DbConnection.getInstance().eseguiQuery("SELECT * FROM prodotto " +
+                    "WHERE prezzo>= '"+costo+"'");
+
+        }
+        else risultato = DbConnection.getInstance().eseguiQuery("SELECT * FROM prodotto " +
+                "WHERE prezzo<= '"+costo+"'");
+
+        ArrayList<Prodotto> listaprodcost=new ArrayList<Prodotto>();
+        Iterator<String[]> i=risultato.iterator();
+        while (i.hasNext()) {
+            String[] riga= i.next();
+            Prodotto prodotto=new Prodotto();
+            prodotto.setNomeprodotto(riga[1]);
+            prodotto.setPrezzo(Double.parseDouble(riga[2]));
+            prodotto.setSconto(Integer.parseInt(riga[3]));
+            prodotto.setProdottocomposto(Boolean.parseBoolean(riga[6]));
+            listaprodcost.add(prodotto);
+        }
+        return listaprodcost;
+    }
 }
+

@@ -7,12 +7,12 @@ import it.view.CardLayout.PrincUtentereg;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginFrame extends JPanel {
+public class LoginPanel extends JPanel {
 
     private JTextField txtUsername = new JTextField();
     private JPasswordField txtPassword = new JPasswordField();
 
-    public LoginFrame(LoginPassFrame finestra, PrincUtentereg finestraprinc) {
+    public LoginPanel(LoginPassFrame finestra, PrincUtentereg finestraprinc) {
         super();
 
         LoginListener listen = new LoginListener(finestra,this,finestraprinc);
@@ -45,7 +45,6 @@ public class LoginFrame extends JPanel {
         //this.setLayout(new FlowLayout());
         setSize(300, 150);
         this.setOpaque(true);
-        setVisible(true);
 
     }
 

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PrincipaleListener implements ActionListener {
+    private double prezzo;
     private PrincUtentereg finestra;
     public PrincipaleListener(PrincUtentereg finestra) {
         this.finestra=finestra;
@@ -35,15 +36,23 @@ public class PrincipaleListener implements ActionListener {
         }
         if("FINO_A_20".equals(e.getActionCommand())) {
             JOptionPane.showMessageDialog(null,"hai selezionato i prodotti fino a €20");
+            prezzo=20;
+            finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
-        if("DA_20_A_50".equals(e.getActionCommand())) {
+        if("FINO_50".equals(e.getActionCommand())) {
             JOptionPane.showMessageDialog(null,"hai selezionato i prodotti da €20 a €50");
+            prezzo=50;
+            finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
-        if("DA_50_A_100".equals(e.getActionCommand())) {
+        if("FINO_100".equals(e.getActionCommand())) {
             JOptionPane.showMessageDialog(null,"hai selezionato i prodotti da €50 a €100");
+            prezzo=100;
+            finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
         if("OLTRE_100".equals(e.getActionCommand())) {
             JOptionPane.showMessageDialog(null,"hai selezionato i prodotti oltre €100");
+            prezzo=101;
+            finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
 
         if("CARRELLO".equals(e.getActionCommand())){
@@ -52,4 +61,7 @@ public class PrincipaleListener implements ActionListener {
 
     }
 
+    public double getPrezzo() {
+        return prezzo;
+    }
 }

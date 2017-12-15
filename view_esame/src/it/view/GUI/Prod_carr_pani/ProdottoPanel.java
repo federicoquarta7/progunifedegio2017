@@ -1,16 +1,17 @@
 package it.view.GUI.Prod_carr_pani;
 
 import it.actionListener.Carr_prod_pani_listener.Prodottolistener;
+import it.model.Prodotto;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ProdottoPanel extends JPanel{
-    public ProdottoPanel(){
+    public ProdottoPanel(Prodotto prodotto){
         super();
         Prodottolistener listener=new Prodottolistener(this);
         this.setLayout(new BorderLayout());
-        JLabel nome=new JLabel("Nome");
+        JLabel nome=new JLabel(prodotto.getNomeprodotto());
         this.add(nome,BorderLayout.NORTH);
 
         ImageIcon imageprod=new ImageIcon("ciao.jpg");
@@ -19,7 +20,7 @@ public class ProdottoPanel extends JPanel{
 
         JPanel sud=new JPanel();
         sud.setLayout(new GridLayout(2,2));
-        JLabel costo=new JLabel("Costo: 40$");
+        JLabel costo=new JLabel("Prezzo: "+prodotto.getPrezzo()+"€");
         sud.add(costo);
         JButton btInfo=new JButton("Info");
         btInfo.addActionListener(listener);

@@ -1,6 +1,7 @@
 package it.view.GUI.Prod_carr_pani;
 
 import it.actionListener.Carr_prod_pani_listener.CartListener;
+import it.model.Prodotto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +15,11 @@ public class CarrelloFrame extends JFrame {
         c.setLayout(new BorderLayout());
         JPanel centro=new JPanel();
         centro.setLayout(new GridLayout(10,2));
-        for (int i=0;i<5;i++){
-            centro.add(new ProdottoPanel());
+        /*for (int i=0;i<5;i++){
+            Prodotto p=
+            centro.add(new ProdottoPanel(p));
         }
+        */
         c.add(centro,BorderLayout.CENTER);
 
         JScrollPane scrollPane=new JScrollPane();

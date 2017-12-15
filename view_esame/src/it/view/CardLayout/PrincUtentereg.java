@@ -2,6 +2,8 @@ package it.view.CardLayout;
 
 import it.actionListener.Guiprinc_listener.PrincipaleListener;
 import it.view.GUI.GUIprincipale_u_g_a.gestore.GuiCatalogoGestore;
+import it.view.GUI.GUIprincipale_u_g_a.utentereg.GuiCUPrezzo;
+import it.view.GUI.GUIprincipale_u_g_a.utentereg.GuiCUReparto;
 import it.view.GUI.GUIprincipale_u_g_a.utentereg.GuiCatalogoUtente;
 import it.view.GUI.GUIprincipale_u_g_a.GuiPrincipale;
 
@@ -17,6 +19,8 @@ public class PrincUtentereg extends JFrame {
         panelcontprinc.add(new GuiPrincipale(this),"1");
         panelcontprinc.add(new GuiCatalogoUtente(this),"2");
         panelcontprinc.add(new GuiCatalogoGestore(this),"3");
+        panelcontprinc.add(new GuiCUReparto(this),"4");
+        panelcontprinc.add(new GuiCUPrezzo(this),"5");
         clp.show(panelcontprinc,"1");
         PrincipaleListener listener = new PrincipaleListener(this);
         JMenuBar bar= new JMenuBar();
@@ -55,11 +59,11 @@ public class PrincUtentereg extends JFrame {
                 fasciaDiPrezzo.add(finoA20);
         JMenuItem da20A50=new JMenuItem("Da €20 a €50");
                 da20A50.addActionListener(listener);
-                da20A50.setActionCommand("DA_20_A_50");
+                da20A50.setActionCommand("FINO_50");
                 fasciaDiPrezzo.add(da20A50);
         JMenuItem da50A100=new JMenuItem("Da €50 a €100");
                 da50A100.addActionListener(listener);
-                da50A100.setActionCommand("DA_50_A_100");
+                da50A100.setActionCommand("FINO_100");
                 fasciaDiPrezzo.add(da50A100);
         JMenuItem oltre=new JMenuItem("Oltre €100");
                 oltre.addActionListener(listener);

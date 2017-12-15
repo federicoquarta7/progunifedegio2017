@@ -8,7 +8,7 @@ import it.model.Utentereg;
 import it.utility.SessionManager;
 import it.view.CardLayout.LoginPassFrame;
 import it.view.CardLayout.PrincUtentereg;
-import it.view.GUI.Login.LoginFrame;
+import it.view.GUI.Login.LoginPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,10 +16,10 @@ import java.awt.event.ActionListener;
 
 public class LoginListener implements ActionListener {
     private LoginPassFrame finestra;
-    private LoginFrame finestralogin;
+    private LoginPanel finestralogin;
     private PrincUtentereg finestraprinc;
 
-    public LoginListener(LoginPassFrame finestra,LoginFrame finestralogin,PrincUtentereg finestraprinc) {
+    public LoginListener(LoginPassFrame finestra, LoginPanel finestralogin, PrincUtentereg finestraprinc) {
         this.finestra = finestra;
         this.finestralogin=finestralogin;
         this.finestraprinc=finestraprinc;
