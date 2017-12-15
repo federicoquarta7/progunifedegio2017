@@ -2,11 +2,16 @@ package it.view.GUI.GUIprincipale_u_g_a.utentereg;
 
 import it.DAO.mysql.ProdottoDAO;
 import it.actionListener.Guiprinc_listener.PrincipaleListener;
+import it.actionListener.Loginlistener.LoginListener;
 import it.model.Prodotto;
 import it.model.Utentereg;
 import it.utility.SessionManager;
+import it.view.CardLayout.LoginPassFrame;
 import it.view.CardLayout.PrincUtentereg;
+import it.view.GUI.GUIprincipale_u_g_a.GuiPrincipale;
+import it.view.GUI.Login.LoginPanel;
 import it.view.GUI.Prod_carr_pani.ProdottoPanel;
+import it.view.GUI.Registrazione;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,10 +23,17 @@ public class GuiCUPrezzo extends JPanel {
     public GuiCUPrezzo(PrincUtentereg princUtentereg) {
         super();
         this.setLayout(new BorderLayout());
-        this.add(new Benvenuto(princUtentereg),BorderLayout.NORTH);
+        LoginPassFrame lpf=new LoginPassFrame(princUtentereg);
+        LoginListener ll=new LoginListener(lpf,new LoginPanel(lpf,princUtentereg),princUtentereg);
+        boolean value=ll.isLogin();
+        if ((value==true)) {
+            this.add(new Login(princUtentereg),BorderLayout.NORTH);
+        }
+        else {
+            this.add(new Benvenuto(princUtentereg), BorderLayout.NORTH);
+        }
         PrincipaleListener pl= new PrincipaleListener(princUtentereg);
-        double prezzo=pl.getPrezzo();
-        ArrayList<Prodotto> listaprodotti=ProdottoDAO.getInstance().findbycosto(prezzo);
+        ArrayList<Prodotto> listaprodotti=ProdottoDAO.getInstance().findbycosto(pl.getPrezzo());
         JPanel centro=new JPanel();
         centro.setLayout(new GridLayout(4,4));
         for(int i=0;i<listaprodotti.size(); i++) {
@@ -37,7 +49,6 @@ public class GuiCUPrezzo extends JPanel {
     }
     public class Benvenuto extends JPanel {
         GuiCUPrezzo.Benvenuto _this = this;
-
         public Benvenuto(PrincUtentereg finestraprinc) {
             super();
             _this.setLayout(new BorderLayout());
@@ -61,6 +72,32 @@ public class GuiCUPrezzo extends JPanel {
             est.add(carrello);
             est.add(panieri);
             _this.add(est, BorderLayout.EAST);
+        }
+    }
+    public class Login extends JPanel{
+        GuiCUPrezzo.Login _this=this;
+        public Login(PrincUtentereg finestraprinc){
+            super();
+            _this.setLayout(new BorderLayout());
+            JPanel est=new JPanel();
+            JButton btlogin = new JButton("Login");
+            btlogin.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new LoginPassFrame(finestraprinc);
+                }
+            });
+            est.add(btlogin);
+            JButton btregistrazione = new JButton("Registrati");
+            btregistrazione.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new Registrazione();
+                }
+            });
+            est.add(btregistrazione);
+            _this.add(est,BorderLayout.EAST);
+
         }
     }
 }

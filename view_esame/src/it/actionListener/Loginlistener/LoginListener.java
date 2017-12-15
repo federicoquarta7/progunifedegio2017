@@ -18,6 +18,7 @@ public class LoginListener implements ActionListener {
     private LoginPassFrame finestra;
     private LoginPanel finestralogin;
     private PrincUtentereg finestraprinc;
+    private boolean loginutente=false;
 
     public LoginListener(LoginPassFrame finestra, LoginPanel finestralogin, PrincUtentereg finestraprinc) {
         this.finestra = finestra;
@@ -51,6 +52,7 @@ public class LoginListener implements ActionListener {
                     finestra.setVisible(false);
                     finestraprinc.getClp().show(finestraprinc.getPanelcontprinc(),"3");
                 } else if (p instanceof Utentereg) {
+                    loginutente=true;
                     System.out.println("benvenuto utente \n" + p.getNome() + " " + p.getCognome());
                     Utentereg utentereg = (Utentereg) p;
                     SessionManager.getInstance().getSession().put("utente",utentereg);
@@ -67,5 +69,9 @@ public class LoginListener implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(null, "il login non è andato a buon fine");
         }
+    }
+
+    public boolean isLogin() {
+        return loginutente;
     }
 }

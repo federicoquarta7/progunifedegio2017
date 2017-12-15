@@ -71,14 +71,14 @@ public class ProdottoDAO implements IProdottoDAO {
     }
     public ArrayList<Prodotto> findbycosto(double costo){
         ArrayList<String[]> risultato;
-        if(costo>100){
+        if(costo<100){
             risultato = DbConnection.getInstance().eseguiQuery("SELECT * FROM prodotto " +
-                    "WHERE prezzo>= '"+costo+"'");
-
+                    "WHERE prezzo<'"+costo+"'");
         }
-        else risultato = DbConnection.getInstance().eseguiQuery("SELECT * FROM prodotto " +
-                "WHERE prezzo<= '"+costo+"'");
-
+        else{
+            risultato = DbConnection.getInstance().eseguiQuery("SELECT * FROM prodotto " +
+                    "WHERE prezzo>= '" + costo + "'");
+        }
         ArrayList<Prodotto> listaprodcost=new ArrayList<Prodotto>();
         Iterator<String[]> i=risultato.iterator();
         while (i.hasNext()) {

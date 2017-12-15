@@ -38,20 +38,19 @@ public class PrincipaleListener implements ActionListener {
             JOptionPane.showMessageDialog(null,"hai premuto libri");
         }
         if("FINO_A_20".equals(e.getActionCommand())) {
-            prezzo=20;
+            prezzo=21;
             finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
         if("FINO_50".equals(e.getActionCommand())) {
-            prezzo=50;
+            prezzo=51;
             finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
         if("FINO_100".equals(e.getActionCommand())) {
-            prezzo=100;
+            prezzo=99.99;
             finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
         if("OLTRE_100".equals(e.getActionCommand())) {
-            JOptionPane.showMessageDialog(null,"hai selezionato i prodotti oltre €100 non funziona");
-            prezzo=101;
+            prezzo=100;
             finestra.getClp().show(finestra.getPanelcontprinc(),"5");
         }
 
